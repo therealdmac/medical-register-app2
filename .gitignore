@@ -1,0 +1,7 @@
+# Project exclude paths
+/modules/backend/target/
+/modules/common/target/
+/modules/frontend/target/
+/modules/test/target/
+# Project exclude paths
+/target/

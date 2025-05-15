@@ -1,0 +1,33 @@
+<ui:composition template="/layout.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:define name="content">
+    <h:form id="recordForm" rendered="#{userSession.canEdit()}">
+      <p:panel header="New Medical Record">
+        <p:inputText value="#{medicalRecordController.record.name}" placeholder="Name" />
+        <p:inputText value="#{medicalRecordController.record.age}" placeholder="Age" />
+        <p:inputTextarea value="#{medicalRecordController.record.medicalHistory}" placeholder="History"/>
+        <p:commandButton value="Save" action="#{medicalRecordController.save}" update="recordTable recordForm"/>
+      </p:panel>
+    </h:form>
+
+    <p:dataTable id="recordTable" value="#{medicalRecordController.records}" var="r" style="margin-top:2em">
+      <p:column headerText="Name">#{r.name}</p:column>
+      <p:column headerText="Age">#{r.age}</p:column>
+      <p:column headerText="History">#{r.medicalHistory}</p:column>
+      <p:column headerText="Created">#{r.createdAt}</p:column>
+      <p:column headerText="Actions" rendered="#{userSession.canDelete()}">
+        <p:commandButton icon="pi pi-trash" title="Delete" action="#{medicalRecordController.delete(r.id)}"
+                         update="recordTable" />
+      </p:column>
+    </p:dataTable>
+
+    <h:panelGroup rendered="#{userSession.canViewAudit()}">
+      <h:outputText value="Audit Log: View permitted for Admin only." style="font-weight:bold; margin-top:2em; display:block;"/>
+    </h:panelGroup>
+  </ui:define>
+</ui:composition>

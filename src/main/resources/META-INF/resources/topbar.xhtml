@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://primefaces.org/ui">
+
+  <h:form id="topbarForm">
+    <div style="background:#3949AB;color:white;padding:1em;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;">
+        <h:graphicImage library="images" name="logo.png" width="40" style="margin-right:1em"/>
+        <h:outputText value="Medical Register" style="font-size:1.2em;font-weight:bold;" />
+      </div>
+      <p:menuButton value="Menu" styleClass="ui-button-flat ui-button-text">
+        <p:menuitem value="Records" outcome="/medical-records.xhtml" icon="pi pi-book" />
+        <p:menuitem value="Logout" url="/logout" icon="pi pi-sign-out" />
+      </p:menuButton>
+    </div>
+  </h:form>
+</ui:composition>
