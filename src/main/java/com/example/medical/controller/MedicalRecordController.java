@@ -25,10 +25,13 @@ public class MedicalRecordController {
 
     public void save() {
         repository.save(record);
-//        record = new MedicalRecord(); // reset form
-//        records = repository.findAll(); // refresh\n    }\n    public void delete(Long id) {
-//        repository.deleteById(id);
-//        records = repository.findAll();
+        record = new MedicalRecord(); // reset form
+        records = repository.findAll(); // refresh
+    }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+        records = repository.findAll();
     }
 
     public MedicalRecord getRecord() {

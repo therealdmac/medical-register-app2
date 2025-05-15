@@ -45,9 +45,9 @@ public class DefaultSecurityConfig {
 		try {
 			http.csrf((csrf) -> csrf.disable());
 			http.authorizeHttpRequests((authorize) -> authorize
-							.requestMatchers("/admin/**").hasRole("ADMIN")
-							.requestMatchers("/doctor/**").hasRole("DOCTOR")
-							.requestMatchers("/nurse/**").hasRole("NURSE")
+//							.requestMatchers("/admin/**").hasRole("ADMIN")
+//							.requestMatchers("/doctor/**").hasRole("DOCTOR")
+//							.requestMatchers("/nurse/**").hasRole("NURSE")
 							//.requestMatchers("/").permitAll()
 							.requestMatchers("/oauth2/**").permitAll()
 							.requestMatchers("/**.faces").permitAll()
@@ -59,7 +59,7 @@ public class DefaultSecurityConfig {
 					.oauth2Login(oauth2 -> {
 						oauth2.loginPage("/login.faces")
 							.successHandler((request, response, authentication) -> {
-								response.sendRedirect("/dashboard.faces");
+								response.sendRedirect("/medical-records.faces");
 							});
 					})
 
@@ -81,12 +81,12 @@ public class DefaultSecurityConfig {
 //		return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
 //	}
 
-	@Bean
-	public UserDetailsService users() {
-		return new InMemoryUserDetailsManager(
-			User.withUsername("alice").password("{noop}password").roles("ADMIN").build(),
-			User.withUsername("bob").password("{noop}password").roles("DOCTOR").build(),
-			User.withUsername("claire").password("{noop}password").roles("NURSE").build()
-		);
-	}
+//	@Bean
+//	public UserDetailsService users() {
+//		return new InMemoryUserDetailsManager(
+//			User.withUsername("alice").password("{noop}password").roles("ADMIN").build(),
+//			User.withUsername("bob").password("{noop}password").roles("DOCTOR").build(),
+//			User.withUsername("claire").password("{noop}password").roles("NURSE").build()
+//		);
+//	}
 }

@@ -1,7 +1,7 @@
-package com.example.medical.common;
-
-public enum UserRole {
-	ADMIN,
-	DOCTOR,
-	NURSE
-}
+//package com.example.medical.common;
+//
+//public enum UserRole {
+//	ADMIN,
+//	DOCTOR,
+//	NURSE
+//}
